@@ -49,10 +49,11 @@ class Pathfind : public NonBlockingGame {
 
   protected:
     virtual void initialize() override {
-      // TODO:
+      // Justus Pettit
+		// TODO:
       // Initialize the pathfinder cell which represents
       // a position on the grid.
-
+		MazeCell pathfinder();
       // Initialize the goal cell
 
       // Populate the cells list for the entire grid
