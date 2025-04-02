@@ -11,8 +11,57 @@ using namespace bridges::game;
 // Create a cell class that holds each cells position, a bool for if it is a wall or open cell
 // Also have values for g, h, f, and parent as helpers for astar
 class MazeCell {
+	//Andrew Beck
     // TODO Implement needed properties and functions to represent a cell on the grid
+	private:
+	int x, y; //position variables
+	int g, h, f; 
+	bool isWall; //determines if cell is a wall or not
 
+	public:
+	//constructor
+	MazeCell(int new_g, int new_h, int new_f, bool new_isWall, int new_x, int new_y) : g(new_g), h(new_h), f(new_f), 
+	isWall(new_isWall), x(new_x), y(new_y) {
+		//class invariants
+	}
+
+	//getters
+	int get_g const() {
+		return g;
+	}
+	int get_h const() {
+		return h;
+	}
+	int get_f const() {
+		return f;
+	}
+	bool get_isWall const() {
+		return isWall;
+	}
+	int get_x const() {
+		return x;
+	}
+	int get_y const() {
+		return y;
+	}
+
+	//setters
+	void set_g (int new_g) {
+		g = new_g;
+	}
+	void set_h (int new_h) {
+		h = new_h;
+	}
+	void set_f (int new_f) {
+		f = new_f;
+	}
+	void set_isWall (bool new_isWall) {
+		isWall = new_isWall;
+	}
+	void set_
+
+
+	
     // Should incldude
     // Constructors
     // Properties for g, h, and f values used in AStar
