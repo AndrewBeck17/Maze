@@ -58,7 +58,12 @@ class MazeCell {
 	void set_isWall (bool new_isWall) {
 		isWall = new_isWall;
 	}
-	void set_
+	void set_x (int newX) {
+    x = newX;
+  }
+  void set_y (int newY) {
+    y = newY;
+  }
 
 
 	
@@ -98,11 +103,14 @@ class Pathfind : public NonBlockingGame {
 
   protected:
     virtual void initialize() override {
+      // Justus Pettit
       // TODO:
       // Initialize the pathfinder cell which represents
       // a position on the grid.
+      pathfinder;
 
       // Initialize the goal cell
+      goal;
 
       // Populate the cells list for the entire grid
 
