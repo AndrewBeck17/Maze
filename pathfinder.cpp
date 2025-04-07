@@ -11,7 +11,75 @@ using namespace bridges::game;
 // Create a cell class that holds each cells position, a bool for if it is a wall or open cell
 // Also have values for g, h, f, and parent as helpers for astar
 class MazeCell {
+	//Andrew Beck
     // TODO Implement needed properties and functions to represent a cell on the grid
+	private:
+	int x, y; //position variables
+	bool isWall; //determines if cell is a wall or not
+
+	//used in pathfinder algorithm
+	double g = 0.0;
+	double h = 0.0;
+	double f = 0.0; 
+
+	//holds value of previous cell
+	MazeCell* parent = nullptr 
+
+	public:
+	//constructor (doesn't include g, h, f, and parent because those values will never be different in class initialization)
+	MazeCell(bool new_isWall, int new_x, int new_y) : isWall(new_isWall), x(new_x), y(new_y) {
+		//class invariants
+		if (x < 0) throw invalid_argument("No negative x values on the grid!");
+		if (y < 0) throw invalid_argument("No negative y values on the grid!");
+	}
+
+	//getters
+	int get_g const() {
+		return g;
+	}
+	int get_h const() {
+		return h;
+	}
+	int get_f const() {
+		return f;
+	}
+	MazeCell* get_parent const() {
+		return parent;
+	}
+	bool get_isWall const() {
+		return isWall;
+	}
+	int get_x const() {
+		return x;
+	}
+	int get_y const() {
+		return y;
+	}
+
+	//setters
+	void set_g (int new_g) {
+		g = new_g;
+	}
+	void set_h (int new_h) {
+		h = new_h;
+	}
+	void set_f (int new_f) {
+		f = new_f;
+	}
+	void set_parent (MazeCell* new_parent) {
+		parent = new_parent;
+	}
+	void set_isWall (bool new_isWall) {
+		isWall = new_isWall;
+	}
+	void set_x (int newX) {
+		if (x < 0) throw invalid_argument("No negative x values on the grid!");
+    	x = newX;
+  ` }
+  ` void set_y (int newY) {
+		if (y < 0) throw invalid_argument("No negative y values on the grid!");
+    	y = newY;
+  	}
 
     // Should incldude
     // Constructors
@@ -49,10 +117,20 @@ class Pathfind : public NonBlockingGame {
 
   protected:
     virtual void initialize() override {
+<<<<<<< HEAD
 	  // TODO:
       // Initialize the pathfinder cell which represents
       // a position on the grid.
+=======
+      // Justus Pettit
+      // TODO:
+      // Initialize the pathfinder cell which represents
+      // a position on the grid.
+      pathfinder;
+
+>>>>>>> refs/remotes/origin/main
       // Initialize the goal cell
+      goal;
 
       // Populate the cells list for the entire grid
 
@@ -62,14 +140,37 @@ class Pathfind : public NonBlockingGame {
 
     virtual void gameLoop() override {
       try {
+		//Andrew Beck
         // TODO:
         // Check input for resetting the board
-
+		
         // Run one step of the AStar algorithm each time process is called.
         // Update the pathfinders position to the position of the current step
+		void process () {
+			//A star algorithm
+		}
 
         // Draw the grid including different colors or symbols for walls,
         // empty cells, the pathfinder, and the end goal.
+		void draw () {}
+		/*  for (x size...) {
+				for (y size...) {
+					if (Mazecell.get_isWall() == true) {
+						cout << "X"; //"X" means wall
+					} else if (MazeCell.get_isWall() == false) {
+						cout << " "; //" " means optional path
+					}
+				}
+			}
+			movecursor(pathfinder.y,pathfinder.x);
+			cout << "O"; //"O" means pathfinder
+			movecutsor(start.y,start.x);
+			cout << "~"; //"~" means start
+			movecursor(end.y,end.x);
+			cout << "-"; //"-" means end
+		}
+			*/
+
       }
       catch (char const * e) {
         cout << e << endl;
