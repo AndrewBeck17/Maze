@@ -15,14 +15,21 @@ class MazeCell {
     // TODO Implement needed properties and functions to represent a cell on the grid
 	private:
 	int x, y; //position variables
-	int g, h, f; 
 	bool isWall; //determines if cell is a wall or not
 
+	//used in pathfinder algorithm
+	double g = 0.0;
+	double h = 0.0;
+	double f = 0.0; 
+
+	//holds value of previous cell
+	MazeCell* parent = nullptr 
+
 	public:
-	//constructor
-	MazeCell(int new_g, int new_h, int new_f, bool new_isWall, int new_x, int new_y) : g(new_g), h(new_h), f(new_f), 
-	isWall(new_isWall), x(new_x), y(new_y) {
-		//class invariants
+	//constructor (doesn't include g, h, f, and parent because those values will never be different in class initialization)
+	MazeCell(bool new_isWall, int new_x, int new_y) : isWall(new_isWall), x(new_x), y(new_y) {
+		if (x < 0) throw invalid_argument("No negative values on the grid!");
+		if (y < 0) throw invalid_argument("No negative values on the grid!");
 	}
 
 	//getters
@@ -34,6 +41,9 @@ class MazeCell {
 	}
 	int get_f const() {
 		return f;
+	}
+	MazeCell* get_parent const() {
+		return parent;
 	}
 	bool get_isWall const() {
 		return isWall;
@@ -55,18 +65,21 @@ class MazeCell {
 	void set_f (int new_f) {
 		f = new_f;
 	}
+	void set_parent (MazeCell* new_parent) {
+		parent = new_parent;
+	}
 	void set_isWall (bool new_isWall) {
 		isWall = new_isWall;
 	}
 	void set_x (int newX) {
-    x = newX;
-  }
-  void set_y (int newY) {
-    y = newY;
-  }
+		if (x < 0) throw invalid_argument("No negative values on the grid!");
+    	x = newX;
+  ` }
+  ` void set_y (int newY) {
+		if (y < 0) throw invalid_argument("No negative values on the grid!");
+    	y = newY;
+  	}
 
-
-	
     // Should incldude
     // Constructors
     // Properties for g, h, and f values used in AStar
