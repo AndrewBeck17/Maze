@@ -28,8 +28,9 @@ class MazeCell {
 	public:
 	//constructor (doesn't include g, h, f, and parent because those values will never be different in class initialization)
 	MazeCell(bool new_isWall, int new_x, int new_y) : isWall(new_isWall), x(new_x), y(new_y) {
-		if (x < 0) throw invalid_argument("No negative values on the grid!");
-		if (y < 0) throw invalid_argument("No negative values on the grid!");
+		//class invariants
+		if (x < 0) throw invalid_argument("No negative x values on the grid!");
+		if (y < 0) throw invalid_argument("No negative y values on the grid!");
 	}
 
 	//getters
@@ -72,11 +73,11 @@ class MazeCell {
 		isWall = new_isWall;
 	}
 	void set_x (int newX) {
-		if (x < 0) throw invalid_argument("No negative values on the grid!");
+		if (x < 0) throw invalid_argument("No negative x values on the grid!");
     	x = newX;
   ` }
   ` void set_y (int newY) {
-		if (y < 0) throw invalid_argument("No negative values on the grid!");
+		if (y < 0) throw invalid_argument("No negative y values on the grid!");
     	y = newY;
   	}
 
@@ -133,14 +134,37 @@ class Pathfind : public NonBlockingGame {
 
     virtual void gameLoop() override {
       try {
+		//Andrew Beck
         // TODO:
         // Check input for resetting the board
-
+		
         // Run one step of the AStar algorithm each time process is called.
         // Update the pathfinders position to the position of the current step
+		void process () {
+			//A star algorithm
+		}
 
         // Draw the grid including different colors or symbols for walls,
         // empty cells, the pathfinder, and the end goal.
+		void draw () {}
+		/*  for (x size...) {
+				for (y size...) {
+					if (Mazecell.get_isWall() == true) {
+						cout << "X"; //"X" means wall
+					} else if (MazeCell.get_isWall() == false) {
+						cout << " "; //" " means optional path
+					}
+				}
+			}
+			movecursor(pathfinder.y,pathfinder.x);
+			cout << "O"; //"O" means pathfinder
+			movecutsor(start.y,start.x);
+			cout << "~"; //"~" means start
+			movecursor(end.y,end.x);
+			cout << "-"; //"-" means end
+		}
+			*/
+
       }
       catch (char const * e) {
         cout << e << endl;
