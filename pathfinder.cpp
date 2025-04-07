@@ -117,18 +117,17 @@ class Pathfind : public NonBlockingGame {
 
   protected:
     virtual void initialize() override {
-<<<<<<< HEAD
-	  // TODO:
-      // Initialize the pathfinder cell which represents
-      // a position on the grid.
-=======
       // Justus Pettit
+		for (int i = 0; i < getBoardHeight(); i++) {
+			for (int j = 0; j < getBoardWidth(); j++;) {
+				setBGColor(i, j, NamedColor.ivory);
+			}
+		}
+
       // TODO:
       // Initialize the pathfinder cell which represents
       // a position on the grid.
       pathfinder;
-
->>>>>>> refs/remotes/origin/main
       // Initialize the goal cell
       goal;
 
