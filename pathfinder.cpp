@@ -117,24 +117,24 @@ class Pathfind : public NonBlockingGame {
 
   protected:
     virtual void initialize() override {
-      // Justus Pettit
-		for (int i = 0; i < getBoardHeight(); i++) {
-			for (int j = 0; j < getBoardWidth(); j++;) {
-				setBGColor(i, j, NamedColor.ivory);
-			}
-		}
+      	// Justus Pettit
+	  	int SIZE = 10;
 
-      // TODO:
-      // Initialize the pathfinder cell which represents
-      // a position on the grid.
-      pathfinder;
-      // Initialize the goal cell
-      goal;
+      	// TODO:
 
-      // Populate the cells list for the entire grid
+      	// Initialize the pathfinder cell which represents
+      	// a position on the grid.
+      	pathfinder(1,1);
 
-      // Generate a maze on the grid using any maze algorithm
-      // Set cells that are walls using your cell implementation
+      	// Initialize the goal cell
+      	MazeCell goal(SIZE-1,SIZE-1);
+
+      	// Populate the cells list for the entire grid
+	  	vector<vector<MazeCell>> map(vector<MazeCell>(SIZE),SIZE);
+
+      	// Generate a maze on the grid using any maze algorithm
+     	// Set cells that are walls using your cell implementation
+		
     }
 
     virtual void gameLoop() override {
