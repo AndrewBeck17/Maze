@@ -27,56 +27,56 @@ class MazeCell {
 
 	public:
 	//constructor (doesn't include g, h, f, and parent because those values will never be different in class initialization)
-	MazeCell(bool new_isWall, int new_x, int new_y) : isWall(new_isWall), x(new_x), y(new_y) {
+	MazeCell(bool new_isWall = false, int new_x = 0, int new_y = 0) : isWall(new_isWall), x(new_x), y(new_y) {
 		//class invariants
 		if (x < 0) throw invalid_argument("No negative x values on the grid!");
 		if (y < 0) throw invalid_argument("No negative y values on the grid!");
 	}
 
 	//getters
-	int get_g const() {
+	int getG() const {
 		return g;
 	}
-	int get_h const() {
+	int getH() const {
 		return h;
 	}
-	int get_f const() {
+	int getF() const {
 		return f;
 	}
-	MazeCell* get_parent const() {
+	MazeCell* getParent() const {
 		return parent;
 	}
-	bool get_isWall const() {
+	bool getIsWall() const {
 		return isWall;
 	}
-	int get_x const() {
+	int getX() const {
 		return x;
 	}
-	int get_y const() {
+	int getY() const {
 		return y;
 	}
 
 	//setters
-	void set_g (int new_g) {
+	void setG (int new_g) {
 		g = new_g;
 	}
-	void set_h (int new_h) {
+	void setH (int new_h) {
 		h = new_h;
 	}
-	void set_f (int new_f) {
+	void setF (int new_f) {
 		f = new_f;
 	}
-	void set_parent (MazeCell* new_parent) {
+	void setParent (MazeCell* new_parent) {
 		parent = new_parent;
 	}
-	void set_isWall (bool new_isWall) {
+	void setIsWall (bool new_isWall) {
 		isWall = new_isWall;
 	}
-	void set_x (int newX) {
+	void setX (int newX) {
 		if (x < 0) throw invalid_argument("No negative x values on the grid!");
     	x = newX;
   ` }
-  ` void set_y (int newY) {
+  ` void setY (int newY) {
 		if (y < 0) throw invalid_argument("No negative y values on the grid!");
     	y = newY;
   	}
@@ -134,7 +134,86 @@ class Pathfind : public NonBlockingGame {
 
       	// Generate a maze on the grid using any maze algorithm
      	// Set cells that are walls using your cell implementation
+		for (int i = 0; i <= SIZE; i++) {
+			for (int j = 0; j <= SIZE; j++) {
+				map[i][j].setX(i);
+				map[i][j].setY(j);
+			}
+		}
 		
+
+		map[0][0].setIsWall(true);
+		map[0][1].setIsWall(true);
+		map[0][2].setIsWall(true);
+		map[0][3].setIsWall(true);
+		map[0][4].setIsWall(true);
+		map[0][5].setIsWall(true);
+		map[0][6].setIsWall(true);
+		map[0][7].setIsWall(true);
+		map[0][8].setIsWall(true);
+		map[0][9].setIsWall(true);
+		map[0][10].setIsWall(true);
+		map[1][0].setIsWall(true);
+		map[1][4].setIsWall(true);
+		map[1][7].setIsWall(true);
+		map[1][10].setIsWall(true);
+		map[2][0].setIsWall(true);
+		map[2][1].setIsWall(true);
+		map[2][2].setIsWall(true);
+		map[2][4].setIsWall(true);
+		map[2][5].setIsWall(true);
+		map[2][7].setIsWall(true);
+		map[2][8].setIsWall(true);
+		map[2][10].setIsWall(true);
+		map[3][0].setIsWall(true);
+		map[3][4].setIsWall(true);
+		map[3][10].setIsWall(true);
+		map[4][0].setIsWall(true);
+		map[4][1].setIsWall(true);
+		map[4][2].setIsWall(true);
+		map[4][6].setIsWall(true);
+		map[4][8].setIsWall(true);
+		map[4][10].setIsWall(true);
+		map[5][0].setIsWall(true);
+		map[5][2].setIsWall(true);
+		map[5][4].setIsWall(true);
+		map[5][5].setIsWall(true);
+		map[5][6].setIsWall(true);
+		map[5][8].setIsWall(true);
+		map[5][10].setIsWall(true);
+		map[6][0].setIsWall(true);
+		map[6][2].setIsWall(true);
+		map[6][4].setIsWall(true);
+		map[6][6].setIsWall(true);
+		map[6][8].setIsWall(true);
+		map[6][10].setIsWall(true);
+		map[7][0].setIsWall(true);
+		map[7][2].setIsWall(true);
+		map[7][4].setIsWall(true);
+		map[7][8].setIsWall(true);
+		map[7][10].setIsWall(true);
+		map[8][0].setIsWall(true);
+		map[8][2].setIsWall(true);
+		map[8][3].setIsWall(true);
+		map[8][4].setIsWall(true);
+		map[8][6].setIsWall(true);
+		map[8][7].setIsWall(true);
+		map[8][8].setIsWall(true);
+		map[8][9].setIsWall(true);
+		map[8][10].setIsWall(true);
+		map[9][0].setIsWall(true);
+		map[9][10].setIsWall(true);
+		map[10][0].setIsWall(true);
+		map[10][1].setIsWall(true);
+		map[10][2].setIsWall(true);
+		map[10][3].setIsWall(true);
+		map[10][4].setIsWall(true);
+		map[10][5].setIsWall(true);
+		map[10][6].setIsWall(true);
+		map[10][7].setIsWall(true);
+		map[10][8].setIsWall(true);
+		map[10][9].setIsWall(true);
+		map[10][10].setIsWall(true);
     }
 
     virtual void gameLoop() override {
